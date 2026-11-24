@@ -332,7 +332,7 @@
         Your presence and heartfelt duas will make our celebration truly complete.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <div id="hostShareSection" class="flex flex-col sm:flex-row items-center justify-center gap-3">
         <button id="whatsappShareBtn"
           class="w-full sm:w-auto px-5 py-2.5 rounded-full bg-emeraldRoyal hover:bg-emeraldRoyal/90 text-ivoryCard font-heading text-xs uppercase tracking-wider font-semibold shadow-sm transition flex items-center justify-center gap-2 cursor-pointer">
           <i class="fa-brands fa-whatsapp text-base text-goldLight"></i>
@@ -352,10 +352,10 @@
     </footer>
   </main>
 
-  <!-- Floating Subtle Play/Pause Background Music Button -->
+  <!-- Floating Subtle Play/Pause Background Music Button (Defaults to Playing State) -->
   <button id="musicToggleBtn" aria-label="Toggle Background Music" title="Play / Pause Wedding Music"
     class="fixed bottom-5 right-5 z-40 w-12 h-12 rounded-full bg-emeraldRoyal text-goldLight border-2 border-goldBase shadow-lg hover:bg-maroonRoyal transition flex items-center justify-center cursor-pointer">
-    <i id="musicIcon" class="fa-solid fa-music text-sm"></i>
+    <i id="musicIcon" class="fa-solid fa-pause text-sm"></i>
   </button>
 
   <!-- Discreet Personalized Guest Link Generator Modal -->
@@ -414,10 +414,19 @@
     // 2. Personalized Guest Greeting (?to= or ?guest= URL parameter)
     const urlParams = new URLSearchParams(window.location.search);
     const guestParam = (urlParams.get('to') || urlParams.get('guest') || '').trim();
+    const hostShareSection = document.getElementById('hostShareSection');
+    const guestLinkModal = document.getElementById('guestLinkModal');
 
     if (guestParam) {
       document.getElementById('guestDisplayName').textContent = guestParam;
       document.getElementById('personalizedBanner').classList.remove('hidden');
+      // Hide share & guest link creation controls when opened via a personalized guest link
+      if (hostShareSection) {
+        hostShareSection.style.display = 'none';
+      }
+      if (guestLinkModal) {
+        guestLinkModal.remove();
+      }
     }
 
     // 3. Countdown Timer to 10 December 2026, 7:00 PM IST
@@ -451,6 +460,7 @@
     // 4. Offline Web Audio API Gentle Instrumental Wedding Music Synthesizer
     let audioCtx = null;
     let isPlaying = false;
+    let userManuallyPaused = false;
     let melodyTimer = null;
     let droneGain = null;
 
@@ -472,7 +482,7 @@
     let noteIndex = 0;
 
     function playSoftPluck(freq) {
-      if (!audioCtx || !isPlaying) return;
+      if (!audioCtx || !isPlaying || audioCtx.state !== 'running') return;
       const now = audioCtx.currentTime;
 
       const osc = audioCtx.createOscillator();
@@ -509,16 +519,12 @@
       subOsc.stop(now + 2.3);
     }
 
-    function startMusic() {
+    function initAudioGraph() {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (!audioCtx) {
         audioCtx = new AudioContextClass();
       }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
 
-      // Warm subtle tanpura-like drone (D3 + A3)
       if (!droneGain) {
         droneGain = audioCtx.createGain();
         droneGain.gain.setValueAtTime(0.018, audioCtx.currentTime);
@@ -531,11 +537,33 @@
           dOsc.connect(droneGain);
           dOsc.start();
         });
-      } else {
+      }
+    }
+
+    function startMusic() {
+      if (userManuallyPaused) return;
+      initAudioGraph();
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume().then(() => {
+          if (!userManuallyPaused && !isPlaying) {
+            beginPlaybackLoop();
+          }
+        }).catch(() => {});
+      }
+
+      if (audioCtx.state === 'running' && !isPlaying) {
+        beginPlaybackLoop();
+      }
+    }
+
+    function beginPlaybackLoop() {
+      if (droneGain && audioCtx) {
         droneGain.gain.setTargetAtTime(0.018, audioCtx.currentTime, 0.2);
       }
 
       isPlaying = true;
+      clearInterval(melodyTimer);
       playSoftPluck(melodyNotes[noteIndex % melodyNotes.length]);
       noteIndex++;
 
@@ -546,7 +574,6 @@
 
       const icon = document.getElementById('musicIcon');
       icon.className = 'fa-solid fa-pause text-sm';
-      showToast('Playing gentle wedding music');
     }
 
     function stopMusic() {
@@ -559,10 +586,33 @@
       icon.className = 'fa-solid fa-music text-sm';
     }
 
+    // Attempt autoplay on page load, and unlock seamlessly on first interaction if browser blocks autoplay
+    window.addEventListener('load', () => {
+      startMusic();
+    });
+
+    function unlockAutoplayOnGesture(e) {
+      if (e && e.target && e.target.closest('#musicToggleBtn')) return;
+      if (!userManuallyPaused && !isPlaying) {
+        startMusic();
+      }
+      if (audioCtx && audioCtx.state === 'running' && isPlaying) {
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+          document.removeEventListener(evt, unlockAutoplayOnGesture);
+        });
+      }
+    }
+
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+      document.addEventListener(evt, unlockAutoplayOnGesture, { passive: true });
+    });
+
     document.getElementById('musicToggleBtn').addEventListener('click', () => {
       if (isPlaying) {
+        userManuallyPaused = true;
         stopMusic();
       } else {
+        userManuallyPaused = false;
         startMusic();
       }
     });
@@ -573,64 +623,69 @@
       return `*بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم*\n\n${greeting}You are cordially invited to the wedding celebrations of\n*Azba & Afzal*\n\n*Haldi-Mehndi Ceremony*\nDate: 09 December 2026\nTime: 7:00 PM Onwards\nVenue: Khedal Mansuri Hall, Juhapura, Ahmedabad\n\n*Barat*\nDate: 10 December 2026\nTime: 7:00 PM Onwards\nVenue: Noor Party Plot, Nr. Khodiyarnagar Cross Road, Behrampura, Ahmedabad\n\nView Invitation Card:\n${customUrl}`;
     }
 
-    document.getElementById('whatsappShareBtn').addEventListener('click', () => {
-      const text = buildInviteMessage(guestParam, window.location.href);
-      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-    });
+    const whatsappShareBtn = document.getElementById('whatsappShareBtn');
+    if (whatsappShareBtn) {
+      whatsappShareBtn.addEventListener('click', () => {
+        const text = buildInviteMessage(guestParam, window.location.href);
+        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+      });
+    }
 
-    // Modal Controls
+    // Modal Controls (only active when no guest name is in URL)
     const modal = document.getElementById('guestLinkModal');
     const customInput = document.getElementById('customGuestInput');
     const urlPreview = document.getElementById('generatedUrlPreview');
 
-    function getPersonalizedUrl() {
-      const baseUrl = window.location.href.split('?')[0];
-      const nameVal = customInput.value.trim();
-      return nameVal ? `${baseUrl}?to=${encodeURIComponent(nameVal)}` : baseUrl;
-    }
+    if (modal && customInput && urlPreview) {
+      function getPersonalizedUrl() {
+        const baseUrl = window.location.href.split('?')[0];
+        const nameVal = customInput.value.trim();
+        return nameVal ? `${baseUrl}?to=${encodeURIComponent(nameVal)}` : baseUrl;
+      }
 
-    function refreshPreview() {
-      urlPreview.textContent = getPersonalizedUrl();
-    }
+      function refreshPreview() {
+        urlPreview.textContent = getPersonalizedUrl();
+      }
 
-    document.getElementById('openLinkGenBtn').addEventListener('click', () => {
-      refreshPreview();
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      customInput.focus();
-    });
+      document.getElementById('openLinkGenBtn').addEventListener('click', () => {
+        refreshPreview();
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        customInput.focus();
+      });
 
-    document.getElementById('closeLinkGenBtn').addEventListener('click', () => {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
+      document.getElementById('closeLinkGenBtn').addEventListener('click', () => {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
-      }
-    });
+      });
 
-    customInput.addEventListener('input', refreshPreview);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
 
-    document.getElementById('copyCustomLinkBtn').addEventListener('click', () => {
-      const link = getPersonalizedUrl();
-      const temp = document.createElement('textarea');
-      temp.value = link;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand('copy');
-      document.body.removeChild(temp);
-      showToast('Personalized link copied!');
-    });
+      customInput.addEventListener('input', refreshPreview);
 
-    document.getElementById('whatsappCustomLinkBtn').addEventListener('click', () => {
-      const link = getPersonalizedUrl();
-      const nameVal = customInput.value.trim();
-      const msg = buildInviteMessage(nameVal, link);
-      window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
-    });
+      document.getElementById('copyCustomLinkBtn').addEventListener('click', () => {
+        const link = getPersonalizedUrl();
+        const temp = document.createElement('textarea');
+        temp.value = link;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast('Personalized link copied!');
+      });
+
+      document.getElementById('whatsappCustomLinkBtn').addEventListener('click', () => {
+        const link = getPersonalizedUrl();
+        const nameVal = customInput.value.trim();
+        const msg = buildInviteMessage(nameVal, link);
+        window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+      });
+    }
   </script>
 </body>
 </html>
