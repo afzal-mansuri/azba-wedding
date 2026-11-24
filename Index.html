@@ -1,1 +1,636 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Azba & Afzal | Wedding Invitation — 09 & 10 December 2026</title>
 
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Great Vibes, Cinzel, Cormorant Garamond & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivoryCard: '#fdfaf3',
+            creamOuter: '#f5efe2',
+            emeraldRoyal: '#0b4232',
+            maroonRoyal: '#6b1426',
+            goldBase: '#c59b27',
+            goldLight: '#e6c86e',
+            goldDark: '#8c6812',
+            inkText: '#2c221c',
+          },
+          fontFamily: {
+            script: ['"Great Vibes"', 'cursive'],
+            heading: ['"Cinzel"', 'serif'],
+            serifBody: ['"Cormorant Garamond"', 'serif'],
+            sansBody: ['"Poppins"', 'sans-serif'],
+            arabic: ['"Amiri"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #f5efe2;
+      color: #2c221c;
+      background-image:
+        radial-gradient(circle at 20% 15%, rgba(197, 155, 39, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 80% 85%, rgba(11, 66, 50, 0.07) 0%, transparent 45%);
+    }
+
+    /* Classic Double-Line Gold Card Frame */
+    .invitation-sheet {
+      background-color: #fdfaf3;
+      border: 1.5px solid rgba(197, 155, 39, 0.65);
+      box-shadow:
+        0 20px 50px -15px rgba(44, 34, 28, 0.14),
+        inset 0 0 0 6px #fdfaf3,
+        inset 0 0 0 7.5px rgba(197, 155, 39, 0.45);
+    }
+
+    .event-box {
+      background: linear-gradient(180deg, #ffffff 0%, #faf5ea 100%);
+      border: 1px solid rgba(197, 155, 39, 0.5);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .event-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -10px rgba(107, 20, 38, 0.15);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #8c6812 0%, #c59b27 45%, #7a580c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes subtleSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .mandala-spin {
+      animation: subtleSpin 120s linear infinite;
+    }
+  </style>
+</head>
+<body class="font-sansBody antialiased min-h-screen py-6 px-3 sm:py-12 sm:px-6 flex flex-col items-center justify-center">
+
+  <!-- Toast Notification -->
+  <div id="toastBanner" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 hidden items-center gap-2 px-4 py-2.5 rounded-full bg-emeraldRoyal text-ivoryCard border border-goldBase shadow-xl text-xs font-medium">
+    <i class="fa-solid fa-check-circle text-goldLight"></i>
+    <span id="toastMessage">Copied!</span>
+  </div>
+
+  <!-- Main Single-Page Classic Wedding Card -->
+  <main class="invitation-sheet relative w-full max-w-2xl rounded-[2rem] px-6 py-10 sm:px-12 sm:py-14 text-center overflow-hidden">
+
+    <!-- Subtle Rotating Mandala Watermark Behind Header -->
+    <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 opacity-[0.06] text-goldDark">
+      <svg class="w-80 h-80 mandala-spin" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>
+        <circle cx="100" cy="100" r="74" stroke="currentColor" stroke-width="1.2"/>
+        <polygon points="100,12 188,100 100,188 12,100" stroke="currentColor" stroke-width="1"/>
+        <polygon points="38,38 162,38 162,162 38,162" stroke="currentColor" stroke-width="1"/>
+        <circle cx="100" cy="100" r="46" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <!-- Corner Ornamental Flourishes -->
+    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-goldBase/65 absolute top-3 left-3 pointer-events-none" viewBox="0 0 100 100" fill="none">
+      <path d="M8 92 V26 Q8 8 26 8 H92" stroke="currentColor" stroke-width="2.2"/>
+      <path d="M18 76 V32 Q18 18 32 18 H76" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="3.5" fill="currentColor"/>
+    </svg>
+    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-goldBase/65 absolute top-3 right-3 rotate-90 pointer-events-none" viewBox="0 0 100 100" fill="none">
+      <path d="M8 92 V26 Q8 8 26 8 H92" stroke="currentColor" stroke-width="2.2"/>
+      <path d="M18 76 V32 Q18 18 32 18 H76" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="3.5" fill="currentColor"/>
+    </svg>
+    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-goldBase/65 absolute bottom-3 left-3 -rotate-90 pointer-events-none" viewBox="0 0 100 100" fill="none">
+      <path d="M8 92 V26 Q8 8 26 8 H92" stroke="currentColor" stroke-width="2.2"/>
+      <path d="M18 76 V32 Q18 18 32 18 H76" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="3.5" fill="currentColor"/>
+    </svg>
+    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-goldBase/65 absolute bottom-3 right-3 rotate-180 pointer-events-none" viewBox="0 0 100 100" fill="none">
+      <path d="M8 92 V26 Q8 8 26 8 H92" stroke="currentColor" stroke-width="2.2"/>
+      <path d="M18 76 V32 Q18 18 32 18 H76" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="3.5" fill="currentColor"/>
+    </svg>
+
+    <!-- 1. TOP ISLAMIC BLESSING HEADER -->
+    <header class="relative z-10 mb-6">
+      <p class="font-arabic text-2xl sm:text-4xl text-emeraldRoyal font-bold tracking-wide leading-relaxed">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم
+      </p>
+      <p class="font-serifBody italic text-xs sm:text-sm text-stone-600 mt-1">
+        In the name of Allah, the Most Gracious, the Most Merciful
+      </p>
+    </header>
+
+    <!-- Ornamental Divider -->
+    <div class="flex items-center justify-center gap-3 my-5">
+      <span class="h-[1px] w-16 sm:w-24 bg-gradient-to-r from-transparent to-goldBase"></span>
+      <span class="text-goldBase text-xs">✦</span>
+      <span class="h-[1px] w-16 sm:w-24 bg-gradient-to-l from-transparent to-goldBase"></span>
+    </div>
+
+    <!-- 2. PERSONALIZED GUEST GREETING BANNER (Shown when ?to= or ?guest= is in URL) -->
+    <div id="personalizedBanner" class="hidden relative z-10 mb-6 mx-auto max-w-md rounded-2xl bg-emeraldRoyal/[0.06] border border-goldBase/60 px-5 py-3.5">
+      <p class="font-heading text-[11px] uppercase tracking-[0.22em] text-goldDark font-semibold mb-1">
+        Personal Invitation
+      </p>
+      <p class="font-serifBody text-lg sm:text-xl text-emeraldRoyal font-semibold">
+        Dear <span id="guestDisplayName" class="text-maroonRoyal underline decoration-goldBase/60 underline-offset-4">Guest</span>,
+      </p>
+      <p class="font-serifBody italic text-sm text-stone-700 mt-0.5">
+        You are cordially invited with family to grace this joyous occasion.
+      </p>
+    </div>
+
+    <!-- 3. WEDDING INVITATION WORDING -->
+    <section class="relative z-10 mb-6">
+      <p class="font-heading text-xs sm:text-sm uppercase tracking-[0.26em] text-maroonRoyal font-semibold mb-3">
+        Wedding Invitation
+      </p>
+      <p class="font-serifBody text-base sm:text-lg text-stone-700 max-w-md mx-auto leading-relaxed">
+        Together with our families, we joyfully invite you to share in our happiness and bless the union of
+      </p>
+    </section>
+
+    <!-- 4. COUPLE NAMES: BRIDE (AZBA) FIRST, THEN GROOM (AFZAL) -->
+    <section class="relative z-10 my-7 sm:my-9">
+      <!-- Bride Name First -->
+      <div>
+        <h1 class="font-script text-6xl sm:text-7xl md:text-8xl gold-gradient-text leading-tight py-1">
+          Azba
+        </h1>
+      </div>
+
+      <!-- Ampersand / Weds -->
+      <div class="my-1.5 sm:my-2 flex items-center justify-center gap-3">
+        <span class="h-[1px] w-10 sm:w-14 bg-goldBase/60"></span>
+        <span class="font-serifBody italic text-xl sm:text-2xl text-maroonRoyal font-semibold">
+          &amp;
+        </span>
+        <span class="h-[1px] w-10 sm:w-14 bg-goldBase/60"></span>
+      </div>
+
+      <!-- Groom Name Second -->
+      <div>
+        <h1 class="font-script text-6xl sm:text-7xl md:text-8xl gold-gradient-text leading-tight py-1">
+          Afzal
+        </h1>
+      </div>
+
+      <!-- Quranic Verse -->
+      <p class="font-serifBody italic text-sm sm:text-base text-stone-600 max-w-sm mx-auto mt-5">
+        “And We created you in pairs.” <span class="not-italic text-xs text-goldDark font-heading tracking-wider">(78:8)</span>
+      </p>
+    </section>
+
+    <!-- Ornamental Divider -->
+    <div class="flex items-center justify-center gap-3 my-7">
+      <span class="h-[1px] w-16 sm:w-24 bg-gradient-to-r from-transparent to-goldBase"></span>
+      <i class="fa-solid fa-star-and-crescent text-goldBase text-xs"></i>
+      <span class="h-[1px] w-16 sm:w-24 bg-gradient-to-l from-transparent to-goldBase"></span>
+    </div>
+
+    <!-- 5. COUNTDOWN TIMER TO DECEMBER 10, 2026, 7:00 PM -->
+    <section class="relative z-10 mb-10">
+      <p class="font-heading text-xs uppercase tracking-[0.22em] text-emeraldRoyal font-semibold mb-4">
+        Counting Down To The Celebration
+      </p>
+      <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto">
+        <div class="rounded-xl bg-white border border-goldBase/50 py-3 px-2 shadow-sm">
+          <span id="cd-days" class="block font-heading text-xl sm:text-3xl font-bold text-maroonRoyal">00</span>
+          <span class="block text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 mt-0.5">Days</span>
+        </div>
+        <div class="rounded-xl bg-white border border-goldBase/50 py-3 px-2 shadow-sm">
+          <span id="cd-hours" class="block font-heading text-xl sm:text-3xl font-bold text-maroonRoyal">00</span>
+          <span class="block text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 mt-0.5">Hours</span>
+        </div>
+        <div class="rounded-xl bg-white border border-goldBase/50 py-3 px-2 shadow-sm">
+          <span id="cd-minutes" class="block font-heading text-xl sm:text-3xl font-bold text-maroonRoyal">00</span>
+          <span class="block text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 mt-0.5">Mins</span>
+        </div>
+        <div class="rounded-xl bg-white border border-goldBase/50 py-3 px-2 shadow-sm">
+          <span id="cd-seconds" class="block font-heading text-xl sm:text-3xl font-bold text-maroonRoyal">00</span>
+          <span class="block text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 mt-0.5">Secs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PROGRAMME / EVENTS SECTION -->
+    <section class="relative z-10 mb-10">
+      <p class="font-heading text-xs uppercase tracking-[0.25em] text-goldDark font-semibold mb-1">
+        Insha’Allah
+      </p>
+      <h2 class="font-heading text-2xl sm:text-3xl font-bold text-emeraldRoyal mb-6">
+        Programme
+      </h2>
+
+      <div class="space-y-5 text-left">
+        <!-- Event 1: Haldi-Mehndi Ceremony -->
+        <div class="event-box rounded-2xl p-5 sm:p-7">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-goldBase/30 pb-3 mb-4">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-emeraldRoyal">
+              Haldi-Mehndi Ceremony
+            </h3>
+            <span class="text-[11px] font-heading uppercase tracking-widest px-3 py-1 rounded-full bg-emeraldRoyal/10 text-emeraldRoyal font-semibold">
+              Day 1
+            </span>
+          </div>
+
+          <div class="space-y-2.5 text-sm sm:text-base font-serifBody text-stone-800">
+            <p class="flex items-center gap-3">
+              <i class="fa-regular fa-calendar text-goldDark w-4 text-center"></i>
+              <span><strong class="font-sansBody text-xs uppercase tracking-wider text-stone-500 mr-1.5">Date:</strong> 09 December 2026</span>
+            </p>
+            <p class="flex items-center gap-3">
+              <i class="fa-regular fa-clock text-goldDark w-4 text-center"></i>
+              <span><strong class="font-sansBody text-xs uppercase tracking-wider text-stone-500 mr-1.5">Time:</strong> 7:00 PM Onwards</span>
+            </p>
+            <p class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-goldDark w-4 text-center mt-1"></i>
+              <span>
+                <strong class="font-sansBody text-xs uppercase tracking-wider text-stone-500 mr-1.5">Venue:</strong>
+                Khedal Mansuri Hall, Juhapura, Ahmedabad
+              </span>
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-goldBase/20 flex justify-end">
+            <a href="https://www.google.com/maps/search/?api=1&query=Khedal+Mansuri+Hall+Juhapura+Ahmedabad"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-xs font-heading uppercase tracking-wider font-semibold text-emeraldRoyal hover:text-maroonRoyal transition">
+              <i class="fa-solid fa-diamond-turn-right text-goldDark"></i>
+              <span>View on Google Maps</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Event 2: Barat -->
+        <div class="event-box rounded-2xl p-5 sm:p-7">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-goldBase/30 pb-3 mb-4">
+            <h3 class="font-heading text-lg sm:text-xl font-bold text-maroonRoyal">
+              Barat
+            </h3>
+            <span class="text-[11px] font-heading uppercase tracking-widest px-3 py-1 rounded-full bg-maroonRoyal/10 text-maroonRoyal font-semibold">
+              Day 2
+            </span>
+          </div>
+
+          <div class="space-y-2.5 text-sm sm:text-base font-serifBody text-stone-800">
+            <p class="flex items-center gap-3">
+              <i class="fa-regular fa-calendar text-goldDark w-4 text-center"></i>
+              <span><strong class="font-sansBody text-xs uppercase tracking-wider text-stone-500 mr-1.5">Date:</strong> 10 December 2026</span>
+            </p>
+            <p class="flex items-center gap-3">
+              <i class="fa-regular fa-clock text-goldDark w-4 text-center"></i>
+              <span><strong class="font-sansBody text-xs uppercase tracking-wider text-stone-500 mr-1.5">Time:</strong> 7:00 PM Onwards</span>
+            </p>
+            <p class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-goldDark w-4 text-center mt-1"></i>
+              <span>
+                <strong class="font-sansBody text-xs uppercase tracking-wider text-stone-500 mr-1.5">Venue:</strong>
+                Noor Party Plot, Nr. Khodiyarnagar Cross Road, Behrampura, Ahmedabad
+              </span>
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-goldBase/20 flex justify-end">
+            <a href="https://www.google.com/maps/search/?api=1&query=Noor+Party+Plot+Khodiyarnagar+Cross+Road+Behrampura+Ahmedabad"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-xs font-heading uppercase tracking-wider font-semibold text-maroonRoyal hover:text-emeraldRoyal transition">
+              <i class="fa-solid fa-diamond-turn-right text-goldDark"></i>
+              <span>View on Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FOOTER & SHARE ACTIONS -->
+    <footer class="relative z-10 pt-6 border-t border-goldBase/40">
+      <p class="font-serifBody italic text-base sm:text-lg text-stone-700 max-w-md mx-auto mb-6">
+        Your presence and heartfelt duas will make our celebration truly complete.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <button id="whatsappShareBtn"
+          class="w-full sm:w-auto px-5 py-2.5 rounded-full bg-emeraldRoyal hover:bg-emeraldRoyal/90 text-ivoryCard font-heading text-xs uppercase tracking-wider font-semibold shadow-sm transition flex items-center justify-center gap-2 cursor-pointer">
+          <i class="fa-brands fa-whatsapp text-base text-goldLight"></i>
+          <span>Share on WhatsApp</span>
+        </button>
+
+        <button id="openLinkGenBtn"
+          class="w-full sm:w-auto px-5 py-2.5 rounded-full bg-white hover:bg-creamOuter text-emeraldRoyal border border-goldBase font-heading text-xs uppercase tracking-wider font-semibold transition flex items-center justify-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-user-tag text-goldDark"></i>
+          <span>Create Guest Link</span>
+        </button>
+      </div>
+
+      <p class="font-script text-3xl text-maroonRoyal mt-7">
+        Azba &amp; Afzal
+      </p>
+    </footer>
+  </main>
+
+  <!-- Floating Subtle Play/Pause Background Music Button -->
+  <button id="musicToggleBtn" aria-label="Toggle Background Music" title="Play / Pause Wedding Music"
+    class="fixed bottom-5 right-5 z-40 w-12 h-12 rounded-full bg-emeraldRoyal text-goldLight border-2 border-goldBase shadow-lg hover:bg-maroonRoyal transition flex items-center justify-center cursor-pointer">
+    <i id="musicIcon" class="fa-solid fa-music text-sm"></i>
+  </button>
+
+  <!-- Discreet Personalized Guest Link Generator Modal -->
+  <div id="guestLinkModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-xs p-4">
+    <div class="w-full max-w-md rounded-2xl bg-ivoryCard border-2 border-goldBase p-6 shadow-2xl relative">
+      <button id="closeLinkGenBtn" aria-label="Close modal" class="absolute top-4 right-4 text-stone-500 hover:text-maroonRoyal cursor-pointer">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <p class="font-heading text-xs uppercase tracking-widest text-goldDark font-semibold mb-1">
+        Host Utility
+      </p>
+      <h3 class="font-heading text-xl font-bold text-emeraldRoyal mb-2">
+        Personalized Guest Link
+      </h3>
+      <p class="font-serifBody text-sm text-stone-600 mb-4">
+        Enter a guest or family name to generate a custom invite link with their name displayed at the top.
+      </p>
+
+      <input type="text" id="customGuestInput" placeholder="e.g., Imran Bhai & Family"
+        class="w-full px-4 py-2.5 rounded-xl bg-white border border-goldBase/60 focus:outline-none focus:border-emeraldRoyal text-sm mb-3" />
+
+      <div class="rounded-xl bg-creamOuter border border-goldBase/40 p-3 text-xs text-stone-700 break-all font-mono mb-4" id="generatedUrlPreview">
+        https://example.com/?to=Guest
+      </div>
+
+      <div class="grid grid-cols-2 gap-2.5">
+        <button id="copyCustomLinkBtn"
+          class="py-2.5 px-4 rounded-xl bg-white border border-goldBase text-emeraldRoyal hover:bg-creamOuter font-heading text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer">
+          <i class="fa-regular fa-copy"></i>
+          <span>Copy Link</span>
+        </button>
+        <button id="whatsappCustomLinkBtn"
+          class="py-2.5 px-4 rounded-xl bg-emeraldRoyal text-ivoryCard hover:bg-emeraldRoyal/90 font-heading text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer">
+          <i class="fa-brands fa-whatsapp text-goldLight"></i>
+          <span>Send Invite</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Toast Notification Helper
+    function showToast(msg) {
+      const banner = document.getElementById('toastBanner');
+      document.getElementById('toastMessage').textContent = msg;
+      banner.classList.remove('hidden');
+      banner.classList.add('flex');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        banner.classList.add('hidden');
+        banner.classList.remove('flex');
+      }, 3000);
+    }
+
+    // 2. Personalized Guest Greeting (?to= or ?guest= URL parameter)
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = (urlParams.get('to') || urlParams.get('guest') || '').trim();
+
+    if (guestParam) {
+      document.getElementById('guestDisplayName').textContent = guestParam;
+      document.getElementById('personalizedBanner').classList.remove('hidden');
+    }
+
+    // 3. Countdown Timer to 10 December 2026, 7:00 PM IST
+    const targetWeddingDate = new Date('2026-12-10T19:00:00+05:30').getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = targetWeddingDate - now;
+
+      if (diff <= 0) {
+        ['cd-days', 'cd-hours', 'cd-minutes', 'cd-seconds'].forEach(id => {
+          document.getElementById(id).textContent = '00';
+        });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // 4. Offline Web Audio API Gentle Instrumental Wedding Music Synthesizer
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyTimer = null;
+    let droneGain = null;
+
+    // Soothing Raag Yaman / Kalyan inspired celebratory frequencies (in Hz)
+    const melodyNotes = [
+      293.66, // D4 (Sa)
+      329.63, // E4 (Re)
+      369.99, // F#4 (Ga)
+      440.00, // A4 (Pa)
+      493.88, // B4 (Dha)
+      554.37, // C#5 (Ni)
+      587.33, // D5 (Sa')
+      493.88, // B4
+      440.00, // A4
+      369.99, // F#4
+      329.63, // E4
+      293.66  // D4
+    ];
+    let noteIndex = 0;
+
+    function playSoftPluck(freq) {
+      if (!audioCtx || !isPlaying) return;
+      const now = audioCtx.currentTime;
+
+      const osc = audioCtx.createOscillator();
+      const subOsc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+
+      subOsc.type = 'triangle';
+      subOsc.frequency.setValueAtTime(freq * 2, now);
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1100, now);
+
+      // Gentle santoor/harp-like envelope
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.065, now + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
+
+      const subGain = audioCtx.createGain();
+      subGain.gain.setValueAtTime(0.015, now);
+
+      osc.connect(filter);
+      subOsc.connect(subGain);
+      subGain.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now);
+      subOsc.start(now);
+      osc.stop(now + 2.3);
+      subOsc.stop(now + 2.3);
+    }
+
+    function startMusic() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!audioCtx) {
+        audioCtx = new AudioContextClass();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      // Warm subtle tanpura-like drone (D3 + A3)
+      if (!droneGain) {
+        droneGain = audioCtx.createGain();
+        droneGain.gain.setValueAtTime(0.018, audioCtx.currentTime);
+        droneGain.connect(audioCtx.destination);
+
+        [146.83, 220.00].forEach(freq => {
+          const dOsc = audioCtx.createOscillator();
+          dOsc.type = 'sine';
+          dOsc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          dOsc.connect(droneGain);
+          dOsc.start();
+        });
+      } else {
+        droneGain.gain.setTargetAtTime(0.018, audioCtx.currentTime, 0.2);
+      }
+
+      isPlaying = true;
+      playSoftPluck(melodyNotes[noteIndex % melodyNotes.length]);
+      noteIndex++;
+
+      melodyTimer = setInterval(() => {
+        playSoftPluck(melodyNotes[noteIndex % melodyNotes.length]);
+        noteIndex++;
+      }, 950);
+
+      const icon = document.getElementById('musicIcon');
+      icon.className = 'fa-solid fa-pause text-sm';
+      showToast('Playing gentle wedding music');
+    }
+
+    function stopMusic() {
+      isPlaying = false;
+      clearInterval(melodyTimer);
+      if (droneGain && audioCtx) {
+        droneGain.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.2);
+      }
+      const icon = document.getElementById('musicIcon');
+      icon.className = 'fa-solid fa-music text-sm';
+    }
+
+    document.getElementById('musicToggleBtn').addEventListener('click', () => {
+      if (isPlaying) {
+        stopMusic();
+      } else {
+        startMusic();
+      }
+    });
+
+    // 5. WhatsApp Share & Personalized Guest Link Generator
+    function buildInviteMessage(guestName = '', customUrl = window.location.href) {
+      const greeting = guestName ? `Dear *${guestName}*,\n\n` : '';
+      return `*بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم*\n\n${greeting}You are cordially invited to the wedding celebrations of\n*Azba & Afzal*\n\n*Haldi-Mehndi Ceremony*\nDate: 09 December 2026\nTime: 7:00 PM Onwards\nVenue: Khedal Mansuri Hall, Juhapura, Ahmedabad\n\n*Barat*\nDate: 10 December 2026\nTime: 7:00 PM Onwards\nVenue: Noor Party Plot, Nr. Khodiyarnagar Cross Road, Behrampura, Ahmedabad\n\nView Invitation Card:\n${customUrl}`;
+    }
+
+    document.getElementById('whatsappShareBtn').addEventListener('click', () => {
+      const text = buildInviteMessage(guestParam, window.location.href);
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+
+    // Modal Controls
+    const modal = document.getElementById('guestLinkModal');
+    const customInput = document.getElementById('customGuestInput');
+    const urlPreview = document.getElementById('generatedUrlPreview');
+
+    function getPersonalizedUrl() {
+      const baseUrl = window.location.href.split('?')[0];
+      const nameVal = customInput.value.trim();
+      return nameVal ? `${baseUrl}?to=${encodeURIComponent(nameVal)}` : baseUrl;
+    }
+
+    function refreshPreview() {
+      urlPreview.textContent = getPersonalizedUrl();
+    }
+
+    document.getElementById('openLinkGenBtn').addEventListener('click', () => {
+      refreshPreview();
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      customInput.focus();
+    });
+
+    document.getElementById('closeLinkGenBtn').addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    customInput.addEventListener('input', refreshPreview);
+
+    document.getElementById('copyCustomLinkBtn').addEventListener('click', () => {
+      const link = getPersonalizedUrl();
+      const temp = document.createElement('textarea');
+      temp.value = link;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      showToast('Personalized link copied!');
+    });
+
+    document.getElementById('whatsappCustomLinkBtn').addEventListener('click', () => {
+      const link = getPersonalizedUrl();
+      const nameVal = customInput.value.trim();
+      const msg = buildInviteMessage(nameVal, link);
+      window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+</body>
+</html>
